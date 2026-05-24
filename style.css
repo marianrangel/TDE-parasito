@@ -1,0 +1,955 @@
+/* ==============================================
+   TENÍASE: COMO PREVENIR A SOLITÁRIA
+   Arquivo: style.css
+   Estilo: Editorial Clínico — formal, institucional
+   ============================================== */
+
+/* ── Google Fonts importadas via HTML ──
+   Cormorant Garamond (títulos elegantes com serifa)
+   Source Sans 3 (corpo limpo e legível)
+   Adicione no <head> do HTML:
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+   ============================================== */
+
+/* ── Variáveis de tema formal ── */
+:root {
+  /* Paleta institucional */
+  --marinho:         #0d1f3c;
+  --marinho-medio:   #1a3560;
+  --marinho-claro:   #2a5298;
+  --dourado:         #b8963e;
+  --dourado-claro:   #d4ae6a;
+  --off-white:       #f7f5f0;
+  --branco:          #ffffff;
+  --cinza-claro:     #eceae5;
+  --cinza-medio:     #8a8a8a;
+  --cinza-texto:     #2c2c2c;
+  --vermelho-alerta: #8b1a1a;
+  --amarelo-atencao: #7a5c00;
+  --verde-rotina:    #1a4a2e;
+
+  /* Tipografia */
+  --fonte-titulo: 'Cormorant Garamond', 'Georgia', serif;
+  --fonte-corpo:  'Source Sans 3', 'Trebuchet MS', sans-serif;
+
+  /* Espaçamentos e formas */
+  --raio:        4px;
+  --raio-medio:  8px;
+  --sombra-leve: 0 2px 12px rgba(13,31,60,0.08);
+  --sombra-card: 0 4px 24px rgba(13,31,60,0.10);
+  --borda:       1px solid #d8d4cc;
+  --transicao:   0.25s ease;
+
+  /* Linha divisória dourada */
+  --linha-dourada: 2px solid var(--dourado);
+}
+
+/* ── Reset e base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  font-weight: 400;
+  color: var(--cinza-texto);
+  background: var(--off-white);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.2;
+  color: var(--marinho);
+}
+
+p { margin-bottom: 1rem; }
+p:last-child { margin-bottom: 0; }
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; padding: 0; }
+
+/* Container principal */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ============================================
+   HERO — CABEÇALHO INSTITUCIONAL
+   ============================================ */
+.hero {
+  position: relative;
+  background-color: var(--marinho);
+  /* Textura sutil de linhas diagonais */
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.015) 40px,
+      rgba(255,255,255,0.015) 41px
+    );
+  padding: 7rem 2rem 6rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Faixa dourada no topo */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+}
+
+/* Faixa dourada na base */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--dourado-claro), transparent);
+}
+
+/* Remove blobs do design anterior */
+.hero-blob { display: none; }
+
+/* Remove ícones flutuantes */
+.hero-icons { display: none; }
+.float-icon { display: none; }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: var(--fonte-corpo);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dourado-claro);
+  border: 1px solid rgba(184,150,62,0.4);
+  padding: 0.4rem 1.4rem;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-title {
+  font-size: clamp(3.8rem, 8vw, 6.5rem);
+  font-weight: 700;
+  color: var(--branco);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+/* Ornamento tipográfico abaixo do título */
+.hero-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--dourado);
+  margin: 1rem auto 0;
+}
+
+.hero-subtitle {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-weight: 400;
+  color: rgba(255,255,255,0.78);
+  font-style: italic;
+  margin: 1.2rem 0 1rem;
+  animation: fadeUp 0.9s ease 0.2s both;
+}
+
+.hero-desc {
+  font-size: 0.97rem;
+  color: rgba(255,255,255,0.60);
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+  animation: fadeUp 1s ease 0.3s both;
+}
+
+/* Botão formal */
+.btn-hero {
+  display: inline-block;
+  font-family: var(--fonte-corpo);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dourado-claro);
+  border: 1px solid var(--dourado);
+  padding: 0.85rem 2.4rem;
+  border-radius: 2px;
+  transition: background var(--transicao), color var(--transicao);
+  animation: fadeUp 1s ease 0.4s both;
+}
+
+.btn-hero:hover {
+  background: var(--dourado);
+  color: var(--marinho);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   NAVBAR — MENU INSTITUCIONAL
+   ============================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--marinho);
+  border-bottom: var(--linha-dourada);
+}
+
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: 58px;
+}
+
+.nav-logo {
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--dourado-claro);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  transition: color var(--transicao), border-bottom var(--transicao);
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+  color: var(--dourado-claro);
+  border-bottom: 2px solid var(--dourado);
+  background: transparent;
+}
+
+/* ============================================
+   SEÇÕES — ESTRUTURA GERAL
+   ============================================ */
+.section {
+  padding: 5.5rem 0;
+  background: var(--off-white);
+}
+
+.section-alt {
+  background: var(--branco);
+}
+
+.section-green {
+  background: #f0f4f8;
+}
+
+/* Rótulo de seção estilo publicação */
+.section-label {
+  font-family: var(--fonte-corpo);
+  font-size: 0.70rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--dourado);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  max-width: 40px;
+  height: 1px;
+  background: var(--dourado);
+  display: inline-block;
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  font-weight: 700;
+  color: var(--marinho);
+  margin-bottom: 0.4rem;
+  border-bottom: var(--linha-dourada);
+  padding-bottom: 0.7rem;
+  display: inline-block;
+}
+
+.section-intro {
+  font-size: 1rem;
+  color: var(--cinza-medio);
+  max-width: 660px;
+  margin: 1.2rem 0 2.5rem;
+  line-height: 1.8;
+}
+
+/* ============================================
+   SEÇÃO 1 — INTRODUÇÃO
+   ============================================ */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.intro-text {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: var(--cinza-texto);
+}
+
+.intro-text strong {
+  color: var(--marinho);
+}
+
+.intro-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Pills formais — sem border-left colorida exagerada */
+.info-pill {
+  background: var(--branco);
+  border: var(--borda);
+  border-left: 3px solid var(--marinho-claro);
+  padding: 0.9rem 1.2rem;
+  border-radius: var(--raio);
+  font-size: 0.90rem;
+  font-weight: 400;
+  color: var(--cinza-texto);
+  box-shadow: var(--sombra-leve);
+}
+
+/* ============================================
+   SEÇÃO 2 — PARASITOSES (CARDS)
+   ============================================ */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.parasite-card {
+  background: var(--branco);
+  border: var(--borda);
+  border-top: 3px solid var(--marinho-claro);
+  border-radius: var(--raio-medio);
+  padding: 1.8rem;
+  box-shadow: var(--sombra-leve);
+  position: relative;
+  transition: box-shadow var(--transicao), transform var(--transicao);
+}
+
+.parasite-card:hover {
+  box-shadow: var(--sombra-card);
+  transform: translateY(-3px);
+}
+
+.card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  opacity: 0.85;
+}
+
+.parasite-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--marinho);
+  margin-bottom: 0.1rem;
+}
+
+.card-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dourado);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.card-body {
+  font-size: 0.91rem;
+  line-height: 1.75;
+  border-top: var(--borda);
+  padding-top: 0.9rem;
+}
+
+.card-body p { margin-bottom: 0.55rem; }
+
+/* Card destaque — Teníase */
+.card-destaque {
+  border-top: 3px solid var(--dourado);
+  background: #fdfbf6;
+  grid-column: span 2;
+}
+
+.destaque-badge {
+  position: absolute;
+  top: -12px;
+  left: 1.6rem;
+  background: var(--dourado);
+  color: var(--marinho);
+  font-family: var(--fonte-corpo);
+  font-size: 0.70rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 1rem;
+  border-radius: 2px;
+}
+
+.card-alert {
+  background: #fdf5e4;
+  border: 1px solid #c8a94a;
+  border-left: 3px solid var(--dourado);
+  border-radius: var(--raio);
+  padding: 0.75rem 1rem;
+  font-size: 0.88rem;
+  color: #5a4000;
+  margin-top: 0.8rem;
+}
+
+/* ============================================
+   SEÇÃO 3 — TRANSMISSÃO
+   ============================================ */
+.transmissao-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.3rem;
+  margin-bottom: 2.5rem;
+}
+
+.trans-card {
+  background: var(--branco);
+  border: var(--borda);
+  border-radius: var(--raio-medio);
+  padding: 1.8rem;
+  text-align: center;
+  box-shadow: var(--sombra-leve);
+  transition: box-shadow var(--transicao), transform var(--transicao);
+}
+
+.trans-card:hover {
+  box-shadow: var(--sombra-card);
+  transform: translateY(-3px);
+}
+
+.trans-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  display: block;
+  opacity: 0.8;
+}
+
+.trans-card h3 {
+  font-size: 1.05rem;
+  color: var(--marinho);
+  margin-bottom: 0.6rem;
+  border-bottom: var(--linha-dourada);
+  padding-bottom: 0.4rem;
+  display: inline-block;
+}
+
+.trans-card p {
+  font-size: 0.88rem;
+  color: var(--cinza-medio);
+}
+
+/* Box do ciclo */
+.ciclo-box {
+  background: var(--marinho);
+  border-radius: var(--raio-medio);
+  padding: 2rem 2.5rem;
+  border: 1px solid var(--marinho-medio);
+}
+
+.ciclo-box h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  color: var(--dourado-claro);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(184,150,62,0.3);
+  padding-bottom: 0.6rem;
+}
+
+.ciclo-steps {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ciclo-step {
+  flex: 1;
+  min-width: 110px;
+  text-align: center;
+}
+
+.ciclo-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border: 2px solid var(--dourado);
+  color: var(--dourado);
+  border-radius: 50%;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 auto 0.5rem;
+}
+
+.ciclo-step p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
+}
+
+.ciclo-arrow {
+  color: var(--dourado);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* ============================================
+   SEÇÃO 4 — PREVENÇÃO
+   ============================================ */
+.prevencao-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.prev-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  background: var(--branco);
+  border: var(--borda);
+  border-left: 3px solid var(--marinho-claro);
+  border-radius: var(--raio-medio);
+  padding: 1.3rem 1.6rem;
+  box-shadow: var(--sombra-leve);
+  transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+
+.prev-item:hover {
+  border-left-color: var(--dourado);
+  box-shadow: var(--sombra-card);
+}
+
+.prev-icone {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  opacity: 0.8;
+  padding-top: 0.1rem;
+}
+
+.prev-texto h3 {
+  font-size: 1.05rem;
+  color: var(--marinho);
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.prev-texto p {
+  font-size: 0.91rem;
+  color: var(--cinza-medio);
+  margin: 0;
+}
+
+/* Caixa de destaque formal */
+.destaque-box {
+  background: var(--marinho);
+  border: 1px solid var(--marinho-medio);
+  border-left: 4px solid var(--dourado);
+  border-radius: var(--raio-medio);
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.destaque-emoji {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.destaque-box p {
+  font-size: 0.94rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.82);
+  margin: 0;
+}
+
+.destaque-box strong {
+  color: var(--dourado-claro);
+}
+
+/* ============================================
+   SEÇÃO 5 — SINTOMAS
+   ============================================ */
+.sintomas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.sintoma-card {
+  background: var(--branco);
+  border: var(--borda);
+  border-radius: var(--raio-medio);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--sombra-leve);
+  transition: box-shadow var(--transicao), transform var(--transicao);
+}
+
+.sintoma-card:hover {
+  box-shadow: var(--sombra-card);
+  transform: translateY(-3px);
+}
+
+.sintoma-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.7rem;
+  opacity: 0.75;
+}
+
+.sintoma-card h3 {
+  font-size: 1rem;
+  color: var(--marinho);
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid var(--cinza-claro);
+  padding-bottom: 0.4rem;
+}
+
+.sintoma-card p {
+  font-size: 0.85rem;
+  color: var(--cinza-medio);
+  line-height: 1.65;
+}
+
+/* Observação */
+.obs-box {
+  background: #fdf8f0;
+  border: 1px solid #d4ae6a;
+  border-left: 4px solid var(--dourado);
+  border-radius: var(--raio);
+  padding: 1.1rem 1.5rem;
+  font-size: 0.92rem;
+  color: #5a4000;
+}
+
+/* ============================================
+   SEÇÃO 6 — QUANDO PROCURAR MÉDICO
+   ============================================ */
+.alertas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+
+.alerta-card {
+  border-radius: var(--raio-medio);
+  padding: 1.8rem;
+  box-shadow: var(--sombra-leve);
+  border: var(--borda);
+}
+
+.alerta-card.urgente {
+  background: #faf5f5;
+  border-top: 3px solid var(--vermelho-alerta);
+}
+
+.alerta-card.atencao {
+  background: #faf8f0;
+  border-top: 3px solid #b8963e;
+}
+
+.alerta-card.rotina {
+  background: #f5faf7;
+  border-top: 3px solid #2a6049;
+}
+
+.alerta-topo {
+  font-family: var(--fonte-corpo);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: var(--borda);
+}
+
+.urgente .alerta-topo { color: var(--vermelho-alerta); }
+.atencao .alerta-topo { color: var(--amarelo-atencao); }
+.rotina  .alerta-topo { color: var(--verde-rotina); }
+
+.alerta-card li {
+  font-size: 0.90rem;
+  padding: 0.3rem 0 0.3rem 1.1rem;
+  position: relative;
+  color: var(--cinza-texto);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.alerta-card li:last-child { border-bottom: none; }
+
+.alerta-card li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--cinza-medio);
+  font-size: 0.75rem;
+}
+
+.alerta-obs {
+  font-size: 0.83rem;
+  color: var(--cinza-medio);
+  font-style: italic;
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: var(--borda);
+}
+
+/* ============================================
+   SEÇÃO 7 — CURIOSIDADES
+   ============================================ */
+.curiosidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.3rem;
+}
+
+.curio-card {
+  background: var(--branco);
+  border: var(--borda);
+  border-radius: var(--raio-medio);
+  padding: 1.6rem;
+  box-shadow: var(--sombra-leve);
+  display: flex;
+  gap: 1.3rem;
+  align-items: flex-start;
+  transition: box-shadow var(--transicao), transform var(--transicao);
+}
+
+.curio-card:hover {
+  box-shadow: var(--sombra-card);
+  transform: translateY(-2px);
+}
+
+.curio-num {
+  font-family: var(--fonte-titulo);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--cinza-claro);
+  line-height: 1;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.curio-card p {
+  font-size: 0.92rem;
+  color: var(--cinza-texto);
+  line-height: 1.75;
+}
+
+.curio-card strong { color: var(--marinho); }
+
+/* ============================================
+   RODAPÉ INSTITUCIONAL
+   ============================================ */
+.footer {
+  background: var(--marinho);
+  padding: 4rem 2rem 2rem;
+  border-top: var(--linha-dourada);
+}
+
+.footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dourado-claro);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.8rem;
+}
+
+.footer-desc {
+  font-size: 0.90rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 520px;
+  margin: 0 auto 1.8rem;
+  line-height: 1.8;
+}
+
+.footer-links {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 0.8rem 0;
+}
+
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.50);
+  padding: 0.3rem 1.2rem;
+  border-right: 1px solid rgba(255,255,255,0.12);
+  transition: color var(--transicao);
+}
+
+.footer-links a:last-child { border-right: none; }
+
+.footer-links a:hover { color: var(--dourado-claro); }
+
+.footer-info {
+  font-size: 0.85rem;
+  line-height: 2;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1.5rem;
+}
+
+.footer-ano {
+  color: rgba(255,255,255,0.60);
+  font-weight: 600;
+}
+
+.footer-aviso {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.30);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1.2rem;
+  font-style: italic;
+}
+
+/* ============================================
+   RESPONSIVIDADE — MEDIA QUERIES
+   ============================================ */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .card-destaque {
+    grid-column: span 1;
+  }
+
+  .ciclo-steps {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ciclo-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .section { padding: 3.5rem 0; }
+
+  .hero { padding: 5rem 1.5rem 4rem; }
+
+  .nav-inner {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.7rem 1rem;
+    gap: 0.4rem;
+  }
+
+  .nav-links a {
+    font-size: 0.70rem;
+    padding: 0.35rem 0.6rem;
+    letter-spacing: 0.06em;
+  }
+
+  .transmissao-grid,
+  .alertas-grid,
+  .curiosidades-grid,
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prev-item { flex-direction: column; gap: 0.5rem; }
+
+  .destaque-box { flex-direction: column; }
+
+  .section-title { display: block; }
+
+  .footer-links a {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
